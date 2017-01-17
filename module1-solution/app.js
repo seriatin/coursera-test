@@ -2,7 +2,11 @@
   'use strict';
 
   angular.module('LunchCheck', [])
-  .controller('LunchCheckController', function($scope) {
+  .controller('LunchCheckController', LunchCheckController);
+
+  LunchCheckController.$inject = ['$scope', '$injector'];
+
+  function LunchCheckController($scope, $injector) {
     $scope.menu = "";
     $scope.isBlankMenu = true;
     $scope.check = function() {
@@ -28,5 +32,5 @@
         return item.trim() != "";
       }).length;
     }
-  });
+  }
 })();
