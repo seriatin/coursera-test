@@ -1,0 +1,19 @@
+<br/>
+<table ng-show="items.foundItems.length > 0" class="table table-hover">
+  <thead>
+  <tr>
+    <th>#</td>
+    <th>Name</td>
+    <th>Description</td>
+    <th>Action</td>
+  </tr>
+</thead>
+<tbody>
+  <tr ng-repeat="menu in items.foundItems">
+    <td>{{$index+1}}</td>
+    <td>{{menu.name}}</td>
+    <td>{{menu.description}}</td>
+    <td><button class="btn btn-default" ng-click="items.onRemove({index: $index});">Don't want this one!</button></td>
+  </tr>
+</tbody>
+</table>
