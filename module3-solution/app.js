@@ -36,6 +36,11 @@
     narrowItDown.notFoundMsg = null;
 
     narrowItDown.getMatchedMenuItems = function() {
+      if ( narrowItDown.searchTerm == '' ) {
+        narrowItDown.notFoundMsg = 'Nothing Found!';
+        narrowItDown.found = [];
+        return;
+      }
       var promise = MenuSearchService.getMatchedMenuItems(narrowItDown.searchTerm);
       promise.then(function(foundItems) {
         if ( foundItems.length == 0 ) {
