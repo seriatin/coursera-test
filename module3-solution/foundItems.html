@@ -1,5 +1,6 @@
 <br/>
-<table ng-show="items.foundItems.length > 0" class="table table-hover">
+<p ng-if="items.notFoundMsg" class="text-info">{{ items.notFoundMsg }}</p>
+<table ng-show="items.foundItems.length > 0 && items.notFoundMsg == null" class="table table-hover">
   <thead>
   <tr>
     <th>#</td>

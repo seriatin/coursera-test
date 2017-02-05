@@ -13,7 +13,8 @@
       templateUrl: 'foundItems.html',
       scope: {
         foundItems: '<',
-        onRemove: '&'
+        onRemove: '&',
+        notFoundMsg: '<'
       },
       controller: FoundItemsDirectiveController,
       controllerAs: 'items',
@@ -32,10 +33,16 @@
     var narrowItDown = this;
     narrowItDown.searchTerm = '';
     narrowItDown.found = [];
+    narrowItDown.notFoundMsg = null;
 
     narrowItDown.getMatchedMenuItems = function() {
       var promise = MenuSearchService.getMatchedMenuItems(narrowItDown.searchTerm);
       promise.then(function(foundItems) {
+        if ( foundItems.length == 0 ) {
+          narrowItDown.notFoundMsg = 'Nothing Found!';
+        } else {
+          narrowItDown.notFoundMsg = null;
+        }
         narrowItDown.found = foundItems;
       })
       .catch(function(error) {
