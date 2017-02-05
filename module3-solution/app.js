@@ -78,7 +78,7 @@
       })
       .then(function(result) {
         var foundItems = result.data.menu_items.filter(function(arg) {
-          return (arg.description.indexOf(searchTerm) != -1);
+          return (arg.description.toLowerCase().indexOf(searchTerm.toLowerCase()) != -1);
         });
         return foundItems;
       });
